@@ -1,3 +1,7 @@
+<h1 align="center">Tic Tac Toe<h1>
+
+This is from react official [tutorial](https://reactjs.org/tutorial/tutorial.html)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

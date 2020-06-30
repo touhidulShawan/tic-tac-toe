@@ -1,0 +1,32 @@
+.board {
+  width: 90%;
+  height: 80vh;
+  background: var(--bg);
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  &-status {
+    color: var(--dark);
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    letter-spacing: 0.2em;
+  }
+
+  &-row {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (min-width: 745px) {
+  .board {
+    width: 500px;
+    height: 500px;
+  }
+}

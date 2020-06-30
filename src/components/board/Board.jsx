@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
-import Square from "./Square";
+import "./Board.scss";
+import Square from "../square/Square";
 
 class Board extends Component {
   constructor(props) {
@@ -24,6 +24,10 @@ class Board extends Component {
   handleClick = (i) => {
     const squares = [...this.state.squareValue];
 
+    if (this.calculateWinner(squares) || squares[i]) {
+      return;
+    }
+
     squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({ squareValue: squares, xIsNext: !this.state.xIsNext });
   };
@@ -44,7 +48,7 @@ class Board extends Component {
 
     for (let line in lines) {
       const [a, b, c] = lines[line];
-      if (square[a] && square[a] === square[b] && square[c]) {
+      if (square[a] && square[a] === square[b] && square[a] === square[c]) {
         return square[a];
       }
     }
@@ -63,8 +67,8 @@ class Board extends Component {
     }
 
     return (
-      <div>
-        <div className="status">{status}</div>
+      <div className="board">
+        <div className="board-status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
