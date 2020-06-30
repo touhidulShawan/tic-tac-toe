@@ -28,8 +28,40 @@ class Board extends Component {
     this.setState({ squareValue: squares, xIsNext: !this.state.xIsNext });
   };
 
+  //   calculate winner
+
+  calculateWinner = (square) => {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    for (let line in lines) {
+      const [a, b, c] = lines[line];
+      if (square[a] && square[a] === square[b] && square[c]) {
+        return square[a];
+      }
+    }
+    return null;
+  };
+
   render() {
-    const status = `Next Player: ${this.state.xIsNext ? "X" : "O"}`;
+    const winner = this.calculateWinner(this.state.squareValue);
+
+    let status;
+
+    if (winner) {
+      status = `Winner: ${winner}`;
+    } else {
+      status = `Next Player: ${this.state.xIsNext ? "X" : "O"}`;
+    }
+
     return (
       <div>
         <div className="status">{status}</div>
